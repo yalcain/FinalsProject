@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FBE7A1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- HEADER CARD -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp"
+            android:backgroundTint="#FFFFFF"
+            android:layout_marginBottom="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Find Your Place"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:textColor="#4F494B" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Choose your place"
+                    android:textSize="14sp"
+                    android:textColor="#888"
+                    android:layout_marginTop="5dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- CARD GRID -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ROW 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <!-- SD DORM -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card1"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="8dp"
+                    android:backgroundTint="#FFFFFF">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/bedspace"
+                            android:scaleType="centerCrop" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#55000000" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="SD Dorm 2"
+                            android:textColor="#FFFFFF"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:layout_gravity="bottom|start"
+                            android:padding="12dp" />
+
+                    </FrameLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- LOFT 22 -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card2"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="8dp"
+                    android:backgroundTint="#FFFFFF">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/trans"
+                            android:scaleType="centerCrop" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#55000000" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Loft 22"
+                            android:textColor="#FFFFFF"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:layout_gravity="bottom|start"
+                            android:padding="12dp" />
+
+                    </FrameLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <!-- ROW 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp"
+                android:weightSum="2">
+
+                <!-- PALAR -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card3"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="8dp"
+                    android:backgroundTint="#FFFFFF">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/bedspace1"
+                            android:scaleType="centerCrop" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#55000000" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Palar"
+                            android:textColor="#FFFFFF"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:layout_gravity="bottom|start"
+                            android:padding="12dp" />
+
+                    </FrameLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- MILFLORES -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card4"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="8dp"
+                    android:backgroundTint="#FFFFFF">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/bedspace2"
+                            android:scaleType="centerCrop" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#55000000" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Milflores"
+                            android:textColor="#FFFFFF"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:layout_gravity="bottom|start"
+                            android:padding="12dp" />
+
+                    </FrameLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

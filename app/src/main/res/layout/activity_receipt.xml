@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FBE7A1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/txtReceipt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Receipt"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:padding="16dp"
+            android:background="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btnHome"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Back to Home"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#FFE18A"
+            android:textColor="#000"/>
+
+    </LinearLayout>
+
+</ScrollView>

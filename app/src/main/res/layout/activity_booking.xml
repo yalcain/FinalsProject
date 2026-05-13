@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FBE7A1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_gravity="center">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="10dp"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Full Name">
+                </EditText>
+
+                <EditText
+                    android:id="@+id/etContact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Contact (11 digits)"
+                    android:inputType="phone"
+                    android:layout_marginTop="8dp">
+                </EditText>
+
+                <TextView
+                    android:id="@+id/txtLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Location"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp">
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Check-In"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp">
+                </TextView>
+
+                <EditText
+                    android:id="@+id/etCheckIn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Select Check-In"
+                    android:focusable="false">
+                </EditText>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Check-Out"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp">
+                </TextView>
+
+                <EditText
+                    android:id="@+id/etCheckOut"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Select Check-Out"
+                    android:focusable="false">
+                </EditText>
+
+                <TextView
+                    android:id="@+id/txtTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total: ₱0"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="12dp">
+                </TextView>
+
+                <CheckBox
+                    android:id="@+id/cbTerms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="I agree to terms"
+                    android:layout_marginTop="8dp">
+                </CheckBox>
+
+                <Button
+                    android:id="@+id/btnBook"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:text="Book Now"
+                    android:backgroundTint="#FFE18A"
+                    android:textColor="#000"
+                    android:layout_marginTop="12dp">
+                </Button>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>
