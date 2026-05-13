@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_dashboard"
+        android:title="Dashboard"
+        />
+
+    <item
+        android:id="@+id/nav_payments"
+        android:title="Payments"
+        />
+
+    <item
+        android:id="@+id/nav_maintenance"
+        android:title="Maintenance Request"
+        />
+
+    <item
+        android:id="@+id/nav_visitor"
+        android:title="Visitor QR Request"
+        />
+
+    <item
+        android:id="@+id/nav_profile"
+        android:title="Profile"
+        />
+
+    <item
+        android:id="@+id/nav_notification"
+        android:title="Notifications"
+        />
+
+    <item
+        android:id="@+id/nav_message"
+        android:title="Messages" />
+
+</menu>

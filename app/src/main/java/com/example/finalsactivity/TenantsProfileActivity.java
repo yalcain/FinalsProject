@@ -1,96 +1,92 @@
 package com.example.finalsactivity;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class TenantProfileActivity extends AppCompatActivity {
+public class TenantsProfileActivity extends AppCompatActivity {
 
-    EditText etName, etAge, etGender, etContact, etEmail, etRoom, etRent;
-    Spinner spinnerStatus;
-    Button btnSave, btnClear;
+    Database db;
+
+    TextView txtName, txtRoom, txtRent, txtDue;
+    EditText etContact;
+    Button btnUpdate;
+
+    int tenantId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tenants_profile);
 
-        etName = findViewById(R.id.etName);
-        etAge = findViewById(R.id.etAge);
-        etGender = findViewById(R.id.etGender);
+        db = new Database(this);
+
+        txtName = findViewById(R.id.txtName);
+        txtRoom = findViewById(R.id.txtRoom);
+        txtRent = findViewById(R.id.txtRent);
+        txtDue = findViewById(R.id.txtDue);
+
         etContact = findViewById(R.id.etContact);
-        etEmail = findViewById(R.id.etEmail);
-        etRoom = findViewById(R.id.etRoom);
-        etRent = findViewById(R.id.etRent);
+        btnUpdate = findViewById(R.id.btnUpdate);
 
-        spinnerStatus = findViewById(R.id.spinnerStatus);
+        // GET TENANT ID FROM INTENT
+        tenantId = getIntent().getIntExtra("tenant_id", -1);
 
-        btnSave = findViewById(R.id.btnSave);
-        btnClear = findViewById(R.id.btnClear);
+        loadTenantProfile();
 
-        String[] status = {"Paid", "Unpaid"};
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_spinner_dropdown_item,
-                status
-        );
-
-        spinnerStatus.setAdapter(adapter);
-
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String name = etName.getText().toString();
-                String age = etAge.getText().toString();
-                String gender = etGender.getText().toString();
-                String contact = etContact.getText().toString();
-                String email = etEmail.getText().toString();
-                String room = etRoom.getText().toString();
-                String rent = etRent.getText().toString();
-                String status = spinnerStatus.getSelectedItem().toString();
-
-                if(name.isEmpty() || age.isEmpty() || gender.isEmpty()
-                        || contact.isEmpty() || email.isEmpty()
-                        || room.isEmpty() || rent.isEmpty()) {
-
-                    Toast.makeText(TenantProfileActivity.this,
-                            "Please fill all fields",
-                            Toast.LENGTH_SHORT).show();
-
-                } else {
-
-                    Toast.makeText(TenantProfileActivity.this,
-                            "Tenant Profile Saved",
-                            Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        btnClear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clearFields();
-            }
-        });
+        btnUpdate.setOnClickListener(v -> updateContact());
     }
 
-    private void clearFields() {
+    private void loadTenantProfile() {
 
-        etName.setText("");
-        etAge.setText("");
-        etGender.setText("");
-        etContact.setText("");
-        etEmail.setText("");
-        etRoom.setText("");
-        etRent.setText("");
-        spinnerStatus.setSelection(0);
+        SQLiteDatabase database = db.getReadableDatabase();
+
+        Cursor c = database.rawQuery(
+                "SELECT * FROM tenants WHERE id=?",
+                new String[]{String.valueOf(tenantId)}
+        );
+
+        if (c.moveToFirst()) {
+
+            String name = c.getString(1);
+            String room = c.getString(2);
+            String rent = c.getString(3);
+            String due = c.getString(4);
+            String contact = c.getString(5);
+
+            txtName.setText(name);
+            txtRoom.setText(room);
+            txtRent.setText("₱" + rent);
+            txtDue.setText(due);
+            etContact.setText(contact);
+        }
+
+        c.close();
+    }
+
+    private void updateContact() {
+
+        SQLiteDatabase database = db.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("contact", etContact.getText().toString());
+
+        database.update(
+                "tenants",
+                values,
+                "id=?",
+                new String[]{String.valueOf(tenantId)}
+        );
+
+        Toast.makeText(this,
+                "Contact Updated Successfully",
+                Toast.LENGTH_SHORT).show();
     }
 }

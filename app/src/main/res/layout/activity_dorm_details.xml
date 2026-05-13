@@ -15,8 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="16dp"
-            app:cardElevation="10dp"
-            android:padding="16dp">
+            app:cardElevation="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -29,8 +28,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_launcher_background">
-                </ImageView>
+                    android:src="@drawable/ic_launcher_background"/>
 
                 <TextView
                     android:id="@+id/txtRoomName"
@@ -71,6 +69,44 @@
                     android:layout_height="wrap_content"
                     android:text="Details"
                     android:layout_marginTop="10dp"/>
+
+                <!-- STAY TYPE -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Select Stay Type"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"/>
+
+                <RadioGroup
+                    android:id="@+id/radioStayType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rbTransient"
+                        android:text="Transient (Daily Stay)"
+                        android:checked="true"/>
+
+
+
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rbBedspace"
+                        android:text="Bedspace (Shared Long Term)"/>
+                </RadioGroup>
+
+                <!-- ADVANCE PAYMENT -->
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cbAdvancePay"
+                    android:text="1 Month Advance Payment Required"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"/>
 
                 <Button
                     android:id="@+id/btnBookNow"
