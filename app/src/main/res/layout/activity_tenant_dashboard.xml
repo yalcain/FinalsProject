@@ -6,13 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- MAIN CONTENT -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- TOOLBAR -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -21,7 +19,6 @@
             android:title="Tenant Dashboard"
             android:titleTextColor="#FFFFFF"/>
 
-        <!-- DASHBOARD CONTENT -->
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -83,7 +80,6 @@
 
     </LinearLayout>
 
-    <!-- NAVIGATION DRAWER -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationView"
         android:layout_width="280dp"
