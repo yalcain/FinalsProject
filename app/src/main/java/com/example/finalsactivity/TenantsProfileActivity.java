@@ -36,7 +36,6 @@ public class TenantsProfileActivity extends AppCompatActivity {
         etContact = findViewById(R.id.etContact);
         btnUpdate = findViewById(R.id.btnUpdate);
 
-        // GET TENANT ID FROM INTENT
         tenantId = getIntent().getIntExtra("tenant_id", -1);
 
         loadTenantProfile();
