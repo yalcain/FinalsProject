@@ -10,7 +10,6 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <!-- PROFILE HEADER -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,7 +35,6 @@
                 android:paddingTop="10dp"/>
         </LinearLayout>
 
-        <!-- PERSONAL INFORMATION CARD -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,7 +70,6 @@
                 android:layout_marginTop="15dp"/>
         </LinearLayout>
 
-        <!-- ROOM DETAILS CARD -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
