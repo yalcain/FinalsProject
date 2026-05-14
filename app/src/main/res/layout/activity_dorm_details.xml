@@ -70,7 +70,6 @@
                     android:text="Details"
                     android:layout_marginTop="10dp"/>
 
-                <!-- STAY TYPE -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -90,8 +89,6 @@
                         android:text="Transient (Daily Stay)"
                         android:checked="true"/>
 
-
-
                     <RadioButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -99,7 +96,6 @@
                         android:text="Bedspace (Shared Long Term)"/>
                 </RadioGroup>
 
-                <!-- ADVANCE PAYMENT -->
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
