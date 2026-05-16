@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ReceiptActivity extends AppCompatActivity {
     TextView txtReceipt;
-    Button btnHome;
+    Button btnHome; 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +16,7 @@ public class ReceiptActivity extends AppCompatActivity {
         setContentView(R.layout.activity_receipt);
 
         txtReceipt = findViewById(R.id.txtReceipt);
-        btnHome = findViewById(R.id.btnHome);
+        btnHome = findViewById(R.id.btnHome); 
 
         Intent i = getIntent();
         String display = "DORM RECEIPT\n" +
@@ -31,7 +31,7 @@ public class ReceiptActivity extends AppCompatActivity {
         txtReceipt.setText(display);
 
         btnHome.setOnClickListener(v -> {
-            Intent intent = new Intent(ReceiptActivity.this, MainActivity2.class);
+            Intent intent = new Intent(ReceiptActivity.this, homeActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
@@ -41,7 +41,7 @@ public class ReceiptActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(this, MainActivity2.class);
+        Intent intent = new Intent(this, homeActivity.class);
         startActivity(intent);
         finish();
     }

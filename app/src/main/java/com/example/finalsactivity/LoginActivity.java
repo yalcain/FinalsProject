@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
 
             Cursor cursor = db.rawQuery("SELECT * FROM users WHERE email=? AND password=?", new String[]{email, password});
             if (cursor.moveToFirst()) {
-                startActivity(new Intent(this, MainActivity2.class));
+                startActivity(new Intent(this, homeActivity.class));
                 finish();
             } else {
                 Toast.makeText(this, "Invalid Credentials", Toast.LENGTH_SHORT).show();

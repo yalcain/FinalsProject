@@ -12,159 +12,38 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalsActivity"
         tools:targetApi="31">
-        <activity
-            android:name=".AdminNotification"
-            android:exported="false" />
-        <activity
-            android:name=".NotificationAdapter"
-            android:exported="false" />
-        <activity
-            android:name=".NotificationModel"
-            android:exported="false" />
-        <activity
-            android:name=".AdminReport"
-            android:exported="false" />
-        <activity
-            android:name=".MaintenanceAdapter"
-            android:exported="false" />
-        <activity
-            android:name=".MaintenanceModel"
-            android:exported="false" />
-        <activity
-            android:name=".AdminRoom"
-            android:exported="false" />
-        <activity
-            android:name=".RoomAdapter"
-            android:exported="false" />
-        <activity
-            android:name=".RoomModel"
-            android:exported="false" />
-        <activity
-            android:name=".AdminTenant"
-            android:exported="false" />
-        <activity
-            android:name=".TenantAdapter"
-            android:exported="false" />
-        <activity
-            android:name=".TenantModel"
-            android:exported="false" />
-        <activity
-            android:name=".PaymentModel"
-            android:exported="false" />
-        <activity
-            android:name=".PaymentAdapter"
-            android:exported="false" />
-        <activity
-            android:name=".AdminMaintenance"
-            android:exported="false" />
-        <activity
-            android:name=".AdminPayment"
-            android:exported="false" />
-        <activity
-            android:name=".AdminDashboard"
-            android:exported="false" />
-        <activity
-            android:name=".PaymentHistoryActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AdminLoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Database"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity2"
-            android:exported="false" />
-        <activity
-            android:name=".LoginDashboard"
-            android:exported="false" />
-        <activity
-            android:name=".NotificationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DashboardFragment"
-            android:exported="false" />
-        <activity
-            android:name=".Maintenance"
-            android:exported="false" />
-        <activity
-            android:name=".TenantDashboard"
-            android:exported="false" />
-        <activity
-            android:name=".TenantsProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ReceiptActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PaymentActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Reservation"
-            android:exported="false" />
-        <activity
-            android:name=".DormDetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AdminActivity"
-            android:exported="false" />
-        <activity
-            android:name=".EditProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ProrileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Loft22Activity"
-            android:exported="false" />
-        <activity
-            android:name=".MilfloresBHActivity"
-            android:exported="false" />
-        <activity
-            android:name=".TheDormitoryActivity"
-            android:exported="false" />
-        <activity
-            android:name=".BookingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SdDormActivity"
-            android:exported="false" />
-        <activity
-            android:name=".homeFragment"
-            android:exported="false" />
-        <activity
-            android:name=".homeActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".BedSpaceReservationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".TransientBookingActvity"
-            android:exported="false" />
-        <activity
-            android:name=".AccountActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MainActivity" />
-
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+        <activity android:name=".LoginActivity" android:exported="false" />
+        <activity android:name=".RegisterActivity" android:exported="false" />
+        <activity android:name=".homeActivity" android:exported="false" />
+        <activity android:name=".DormDetailsActivity" android:exported="false" />
+        <activity android:name=".BookingActivity" android:exported="false" />
+        <activity android:name=".PaymentActivity" android:exported="false" />
+        <activity android:name=".ReceiptActivity" android:exported="false" />
+        <activity android:name=".NotificationActivity" android:exported="false" />
+        <activity android:name=".Maintenance" android:exported="false" />
+        <activity android:name=".TenantsProfileActivity" android:exported="false" />
+        <activity android:name=".AccountActivity" android:exported="false" />
+
+        <activity android:name=".AdminDashboard" android:exported="false" />
+        <activity android:name=".AdminPostActivity" android:exported="false" />
+        <activity android:name=".AdminPaymentView" android:exported="false" />
+        <activity android:name=".AdminPayment" android:exported="false" />
+
+        <activity android:name=".SdDormActivity" android:exported="false" />
+        <activity android:name=".Loft22Activity" android:exported="false" />
+        <activity android:name=".MilfloresBHActivity" android:exported="false" />
+        <activity android:name=".TheDormitoryActivity" android:exported="false" />
+        <activity android:name=".Reservation" android:exported="false" />
+
+    </application>
 </manifest>
