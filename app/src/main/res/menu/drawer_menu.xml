@@ -2,32 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
         <item
-            android:id="@+id/nav_dashboard"
-            android:title="Dashboard"
-            android:icon="@android:drawable/ic_menu_view"/>
+            android:id="@+id/nav_home"
+            android:title="Home"/>
+        <item
+            android:id="@+id/nav_tenant"
+            android:title="Profile"/>
 
         <item
-            android:id="@+id/nav_payments"
-            android:title="Payments"
-            android:icon="@android:drawable/ic_menu_send"/>
+            android:id="@+id/nav_payment"
+            android:title="Payment"/>
+        <item
+            android:id="@+id/nav_receipt"
+            android:title="Receipt"/>
 
         <item
-            android:id="@+id/nav_maintenance"
-            android:title="Maintenance Request"
-            android:icon="@android:drawable/ic_menu_edit"/>
+            android:id="@+id/nav_notif"
+            android:title="Notification"/>
 
         <item
-            android:id="@+id/nav_visitor"
-            android:title="Visitor Request"
-            android:icon="@android:drawable/ic_menu_myplaces"/>
-
-        <item
-            android:id="@+id/nav_profile"
-            android:title="Profile" />
-
-        <item
-            android:id="@+id/nav_notification"
-            android:title="Notifications"
-            android:icon="@android:drawable/ic_dialog_info"/>
+            android:id="@+id/nav_logout"
+            android:title="Logout"/>
 
 </menu>

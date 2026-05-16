@@ -10,7 +10,6 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <!-- PROFILE HEADER -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,7 +35,6 @@
                 android:paddingTop="10dp"/>
         </LinearLayout>
 
-        <!-- PERSONAL INFORMATION CARD -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,12 +44,16 @@
             android:layout_marginTop="20dp">
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Personal Information"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:textColor="#000"/>
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Contact Number"
                 android:textStyle="bold"
                 android:paddingTop="10dp"/>
@@ -72,7 +74,6 @@
                 android:layout_marginTop="15dp"/>
         </LinearLayout>
 
-        <!-- ROOM DETAILS CARD -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

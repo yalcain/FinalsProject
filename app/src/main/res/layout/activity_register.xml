@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FBE7A1">
+    android:background="#FFF9E3">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -20,98 +20,122 @@
             android:orientation="vertical"
             android:padding="25dp">
 
+
+
+            <!-- TITLE -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Create Account"
-                android:textSize="30sp"
+                android:textSize="22sp"
                 android:textStyle="bold"
-                android:textColor="#222222"
+                android:textColor="#4F494B"
                 android:layout_gravity="center"
-                android:layout_marginBottom="20dp" />
+                android:layout_marginTop="10dp"/>
 
+            <!-- FULLNAME -->
             <EditText
                 android:id="@+id/etFullname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:backgroundTint="#FFE18A"
                 android:hint="Full Name"
-                android:padding="15dp"
-                android:textColor="#000000"
-                android:textColorHint="#999999"
-                android:inputType="textPersonName" />
+                android:padding="15dp" />
 
+            <!-- USERNAME -->
+            <EditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#FFE18A"
+                android:hint="Username"
+                android:padding="15dp" />
+
+            <!-- AGE -->
             <EditText
                 android:id="@+id/etAge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#FFE18A"
                 android:hint="Age"
                 android:inputType="number"
-                android:padding="15dp"
-                android:layout_marginTop="15dp"
-                android:textColor="#000000"
-                android:textColorHint="#999999" />
+                android:padding="15dp" />
 
+            <!-- GENDER -->
             <Spinner
                 android:id="@+id/spinnerGender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp" />
+                android:layout_marginTop="10dp" />
 
+            <!-- CONTACT -->
             <EditText
                 android:id="@+id/etContact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#FFE18A"
                 android:hint="Contact Number"
                 android:inputType="phone"
-                android:padding="15dp"
-                android:layout_marginTop="15dp"
-                android:textColor="#000000"
-                android:textColorHint="#999999" />
+                android:padding="15dp" />
 
+            <!-- EMAIL -->
             <EditText
                 android:id="@+id/etRegEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#FFE18A"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:padding="15dp"
-                android:layout_marginTop="15dp"
-                android:textColor="#000000"
-                android:textColorHint="#999999" />
+                android:padding="15dp" />
 
+            <!-- PASSWORD -->
             <EditText
                 android:id="@+id/etRegPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#FFE18A"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:padding="15dp"
-                android:layout_marginTop="15dp"
-                android:textColor="#000000"
-                android:textColorHint="#999999" />
+                android:padding="15dp" />
 
+            <!-- CONFIRM PASSWORD -->
             <EditText
                 android:id="@+id/etConfirmPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#FFE18A"
                 android:hint="Confirm Password"
                 android:inputType="textPassword"
-                android:padding="15dp"
-                android:layout_marginTop="15dp"
-                android:textColor="#000000"
-                android:textColorHint="#999999" />
+                android:padding="15dp" />
 
+            <!-- REGISTER BUTTON -->
             <Button
                 android:id="@+id/btnRegister"
-                android:layout_width="180dp"
-                android:layout_height="55dp"
-                android:text="Register"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textAllCaps="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:backgroundTint="#FFE18A"
-                android:layout_marginTop="30dp"
-                android:layout_gravity="center" />
+                android:text="Register"
+                android:textColor="#4F494B"
+                android:textStyle="bold" />
+
+            <!-- BACK TO LOGIN -->
+            <TextView
+                android:id="@+id/txtBackLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back to Login"
+                android:textColor="#FFE18A"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"/>
 
         </LinearLayout>
 

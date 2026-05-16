@@ -1,31 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="180dp"
-    android:background="#FFE08A"
-    android:gravity="center"
-    android:orientation="vertical">
-
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/profile"
-        android:padding="5dp"/>
+    android:layout_height="150dp"
+    android:background="#6200EE"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <TextView
-        android:layout_marginTop="10dp"
-        android:text="Tenant User"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#000"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:text="Dormitory System"
-        android:textColor="#444"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="Dorm System"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"/>
 
 </LinearLayout>

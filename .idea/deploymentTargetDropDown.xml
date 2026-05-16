@@ -5,7 +5,13 @@
       <entry key="MainActivity">
         <State />
       </entry>
+      <entry key="MainActivity2">
+        <State />
+      </entry>
       <entry key="Maintenance">
+        <State />
+      </entry>
+      <entry key="TenantDashboard">
         <State />
       </entry>
       <entry key="app">

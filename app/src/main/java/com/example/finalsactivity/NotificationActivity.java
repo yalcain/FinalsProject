@@ -12,20 +12,25 @@ import java.util.ArrayList;
 
 public class NotificationActivity extends AppCompatActivity {
 
-    Database db;
+    Database dbHelper;
+    SQLiteDatabase db;
+
     ListView listView;
 
-    int tenantId = 1; // replace with logged-in tenant ID
-
     ArrayList<String> notifList;
+
+    int tenantId = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
 
-        db = new Database(this);
         listView = findViewById(R.id.listNotif);
+
+        // DATABASE
+        dbHelper = new Database(this);
+        db = dbHelper.getReadableDatabase();
 
         loadNotifications();
     }
@@ -34,39 +39,69 @@ public class NotificationActivity extends AppCompatActivity {
 
         notifList = new ArrayList<>();
 
-        SQLiteDatabase database = db.getReadableDatabase();
+        Cursor c = null;
 
-        Cursor c = database.rawQuery(
-                "SELECT title, message, type, date FROM notifications WHERE tenant_id=? ORDER BY id DESC",
-                new String[]{String.valueOf(tenantId)}
-        );
+        try {
 
-        if (c.moveToFirst()) {
-            do {
-                String title = c.getString(0);
-                String msg = c.getString(1);
-                String type = c.getString(2);
-                String date = c.getString(3);
+            c = db.rawQuery(
+                    "SELECT title, message, type, date " +
+                            "FROM notifications " +
+                            "WHERE tenant_id=? " +
+                            "ORDER BY id DESC",
+                    new String[]{String.valueOf(tenantId)}
+            );
 
-                notifList.add(
-                        "📌 " + title +
-                                "\n" + msg +
-                                "\nType: " + type +
-                                "\nDate: " + date + "\n"
-                );
+            if (c.moveToFirst()) {
 
-            } while (c.moveToNext());
-        } else {
-            notifList.add("No notifications yet");
+                do {
+
+                    String title = c.getString(0);
+                    String message = c.getString(1);
+                    String type = c.getString(2);
+                    String date = c.getString(3);
+
+                    notifList.add(
+                            "📌 " + title +
+                                    "\n\n" + message +
+                                    "\n\nType: " + type +
+                                    "\nDate: " + date
+                    );
+
+                } while (c.moveToNext());
+
+            } else {
+
+                notifList.add("No notifications yet");
+            }
+
+        } catch (Exception e) {
+
+            notifList.add("ERROR: " + e.getMessage());
+            e.printStackTrace();
+
+        } finally {
+
+            if (c != null) {
+                c.close();
+            }
         }
 
-        c.close();
-
         ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(this,
+                new ArrayAdapter<>(
+                        this,
                         android.R.layout.simple_list_item_1,
-                        notifList);
+                        notifList
+                );
 
         listView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (db != null) {
+            db.close();
+        }
     }
 }

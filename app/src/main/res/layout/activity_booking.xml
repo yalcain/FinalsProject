@@ -1,117 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FBE7A1">
+    android:background="#F5F7FB">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:layout_gravity="center">
+        android:orientation="vertical"
+        android:padding="20dp">
 
-        <androidx.cardview.widget.CardView
+        <!-- TITLE -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Booking Form"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#16396B" />
+
+        <!-- PROPERTY -->
+        <TextView
+            android:id="@+id/txtLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="10dp"
-            android:padding="16dp">
+            android:text="Property Location"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#444"
+            android:layout_marginTop="10dp" />
 
-            <LinearLayout
+        <!-- ROOM TYPE -->
+        <TextView
+            android:id="@+id/txtRoomType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transient"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#4CAF50"
+            android:layout_marginTop="8dp" />
+
+        <!-- NAME -->
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="20dp"
+            android:hint="Full Name"
+            android:padding="15dp"
+            android:background="@android:drawable/edit_text"
+            android:inputType="textPersonName" />
+
+        <!-- CONTACT -->
+        <EditText
+            android:id="@+id/etContact"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="12dp"
+            android:hint="Contact Number"
+            android:maxLength="11"
+            android:padding="15dp"
+            android:background="@android:drawable/edit_text"
+            android:inputType="phone" />
+
+        <!-- DATE LAYOUT -->
+        <LinearLayout
+            android:id="@+id/layoutDates"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- CHECK-IN -->
+            <EditText
+                android:id="@+id/etCheckIn"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_height="55dp"
+                android:layout_marginTop="12dp"
+                android:hint="Check-In Date"
+                android:focusable="false"
+                android:clickable="true"
+                android:padding="15dp"
+                android:background="@android:drawable/edit_text" />
 
-                <EditText
-                    android:id="@+id/etName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Full Name">
-                </EditText>
+            <!-- CHECK-OUT -->
+            <EditText
+                android:id="@+id/etCheckOut"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="12dp"
+                android:hint="Check-Out Date"
+                android:focusable="false"
+                android:clickable="true"
+                android:padding="15dp"
+                android:background="@android:drawable/edit_text" />
 
-                <EditText
-                    android:id="@+id/etContact"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Contact (11 digits)"
-                    android:inputType="phone"
-                    android:layout_marginTop="8dp">
-                </EditText>
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/txtLocation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Location"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp">
-                </TextView>
+        <!-- TOTAL -->
+        <TextView
+            android:id="@+id/txtTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total: ₱0"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:layout_marginTop="20dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Check-In"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp">
-                </TextView>
+        <!-- TERMS -->
+        <CheckBox
+            android:id="@+id/cbTerms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I agree to the terms and conditions"
+            android:layout_marginTop="20dp" />
 
-                <EditText
-                    android:id="@+id/etCheckIn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Select Check-In"
-                    android:focusable="false">
-                </EditText>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Check-Out"
-                    android:textStyle="bold"
-                    android:layout_marginTop="8dp">
-                </TextView>
-
-                <EditText
-                    android:id="@+id/etCheckOut"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Select Check-Out"
-                    android:focusable="false">
-                </EditText>
-
-                <TextView
-                    android:id="@+id/txtTotal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Total: ₱0"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="12dp">
-                </TextView>
-
-                <CheckBox
-                    android:id="@+id/cbTerms"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="I agree to terms"
-                    android:layout_marginTop="8dp">
-                </CheckBox>
-
-                <Button
-                    android:id="@+id/btnBook"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:text="Book Now"
-                    android:backgroundTint="#FFE18A"
-                    android:textColor="#000"
-                    android:layout_marginTop="12dp">
-                </Button>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
+        <!-- BOOK BUTTON -->
+        <Button
+            android:id="@+id/btnBook"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Confirm Booking"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:backgroundTint="#FFD54F"
+            android:layout_marginTop="25dp" />
 
     </LinearLayout>
 

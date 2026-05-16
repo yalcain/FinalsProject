@@ -13,6 +13,72 @@
         android:theme="@style/Theme.FinalsActivity"
         tools:targetApi="31">
         <activity
+            android:name=".AdminNotification"
+            android:exported="false" />
+        <activity
+            android:name=".NotificationAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".NotificationModel"
+            android:exported="false" />
+        <activity
+            android:name=".AdminReport"
+            android:exported="false" />
+        <activity
+            android:name=".MaintenanceAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".MaintenanceModel"
+            android:exported="false" />
+        <activity
+            android:name=".AdminRoom"
+            android:exported="false" />
+        <activity
+            android:name=".RoomAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".RoomModel"
+            android:exported="false" />
+        <activity
+            android:name=".AdminTenant"
+            android:exported="false" />
+        <activity
+            android:name=".TenantAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".TenantModel"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentModel"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".AdminMaintenance"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPayment"
+            android:exported="false" />
+        <activity
+            android:name=".AdminDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Database"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".LoginDashboard"
+            android:exported="false" />
+        <activity
             android:name=".NotificationActivity"
             android:exported="false" />
         <activity
@@ -23,9 +89,6 @@
             android:exported="false" />
         <activity
             android:name=".TenantDashboard"
-            android:exported="false" />
-        <activity
-            android:name=".Database"
             android:exported="false" />
         <activity
             android:name=".TenantsProfileActivity"

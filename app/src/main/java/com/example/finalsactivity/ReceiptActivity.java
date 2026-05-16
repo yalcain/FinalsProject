@@ -2,13 +2,13 @@ package com.example.finalsactivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
-import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ReceiptActivity extends AppCompatActivity {
-
     TextView txtReceipt;
+    Button btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,28 +16,33 @@ public class ReceiptActivity extends AppCompatActivity {
         setContentView(R.layout.activity_receipt);
 
         txtReceipt = findViewById(R.id.txtReceipt);
+        btnHome = findViewById(R.id.btnHome);
 
-        String receipt =
-                "DORM RECEIPT\n\n" +
-                        "Name: " + getIntent().getStringExtra("name") + "\n" +
-                        "Contact: " + getIntent().getStringExtra("contact") + "\n" +
-                        "Property: " + getIntent().getStringExtra("property") + "\n" +
-                        "Location: " + getIntent().getStringExtra("location") + "\n" +
-                        "Check-In: " + getIntent().getStringExtra("checkin") + "\n" +
-                        "Check-Out: " + getIntent().getStringExtra("checkout") + "\n\n" +
-                        "Total: ₱" + getIntent().getIntExtra("total", 0) + "\n" +
-                        "Downpayment: ₱" + getIntent().getIntExtra("down", 0) + "\n" +
-                        "Balance: ₱" + getIntent().getIntExtra("balance", 0) + "\n\n" +
-                        "Payment: " + getIntent().getStringExtra("payment") + "\n" +
-                        "Status: " + getIntent().getStringExtra("status") + "\n\n" +
-                        "STATUS: CONFIRMED";
+        Intent i = getIntent();
+        String display = "DORM RECEIPT\n" +
+                "--------------------\n" +
+                "Name: " + i.getStringExtra("name") + "\n" +
+                "Property: " + i.getStringExtra("property") + "\n" +
+                "Amount Paid: ₱" + i.getIntExtra("down", 0) + "\n" +
+                "Status: " + i.getStringExtra("status") + "\n" +
+                "Method: " + i.getStringExtra("payment") + "\n\n" +
+                "Thank you for booking!";
 
-        txtReceipt.setText(receipt);
+        txtReceipt.setText(display);
+
+        btnHome.setOnClickListener(v -> {
+            Intent intent = new Intent(ReceiptActivity.this, MainActivity2.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+        });
     }
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(this, homeActivity.class);
-
+        super.onBackPressed();
+        Intent intent = new Intent(this, MainActivity2.class);
+        startActivity(intent);
+        finish();
     }
 }

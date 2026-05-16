@@ -1,136 +1,80 @@
 package com.example.finalsactivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.*;
-
+import android.widget.Button;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class PaymentActivity extends AppCompatActivity {
-
-    Spinner spPayment;
-    EditText etGcashRef, etCardRef;
     Button btnPay;
+    String name, property, contact, location, checkin, checkout;
+    int total, down, balance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
 
-        spPayment = findViewById(R.id.spPayment);
-        etGcashRef = findViewById(R.id.etGcashRef);
-        etCardRef = findViewById(R.id.etCardRef);
         btnPay = findViewById(R.id.btnPay);
 
-        String[] methods = {"Cash", "GCash", "Card"};
-        spPayment.setAdapter(new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_dropdown_item,
-                methods));
-
-        spPayment.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                String selected = parent.getItemAtPosition(position).toString();
-
-                etGcashRef.setVisibility(View.GONE);
-                etCardRef.setVisibility(View.GONE);
-
-                if (selected.equals("GCash")) {
-                    etGcashRef.setVisibility(View.VISIBLE);
-                }
-
-                else if (selected.equals("Card")) {
-                    etCardRef.setVisibility(View.VISIBLE);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
-        });
+        Intent intent = getIntent();
+        name = intent.getStringExtra("name");
+        property = intent.getStringExtra("property");
+        contact = intent.getStringExtra("contact");
+        location = intent.getStringExtra("location");
+        checkin = intent.getStringExtra("checkin");
+        checkout = intent.getStringExtra("checkout");
+        total = intent.getIntExtra("total", 0);
+        down = intent.getIntExtra("down", 0);
+        balance = intent.getIntExtra("balance", 0);
 
         btnPay.setOnClickListener(v -> {
+            try {
+                SQLiteDatabase db = openOrCreateDatabase("DormDB", MODE_PRIVATE, null);
+                db.execSQL("CREATE TABLE IF NOT EXISTS payments (id INTEGER PRIMARY KEY AUTOINCREMENT, userName TEXT, property TEXT, amount INTEGER, method TEXT, status TEXT, date TEXT)");
+                db.execSQL("CREATE TABLE IF NOT EXISTS notifications (id INTEGER PRIMARY KEY AUTOINCREMENT, tenant_id INTEGER, title TEXT, message TEXT, type TEXT, date TEXT)");
 
-            String payment = spPayment.getSelectedItem().toString();
+                String currentDate = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(new Date());
 
-            Intent fromBooking = getIntent();
+                ContentValues cv = new ContentValues();
+                cv.put("userName", name != null ? name : "Guest");
+                cv.put("property", property != null ? property : "N/A");
+                cv.put("amount", down);
+                cv.put("method", "Gcash/Card");
+                cv.put("status", "Paid");
+                cv.put("date", currentDate);
+                db.insert("payments", null, cv);
 
-            String name = fromBooking.getStringExtra("name");
-            String contact = fromBooking.getStringExtra("contact");
-            String property = fromBooking.getStringExtra("property");
-            String location = fromBooking.getStringExtra("location");
-            String checkin = fromBooking.getStringExtra("checkin");
-            String checkout = fromBooking.getStringExtra("checkout");
+                ContentValues nav = new ContentValues();
+                nav.put("tenant_id", 1);
+                nav.put("title", "Booking Confirmed");
+                nav.put("message", "Success! You booked " + property);
+                nav.put("type", "Payment");
+                nav.put("date", currentDate);
+                db.insert("notifications", null, nav);
 
-            int total = fromBooking.getIntExtra("total", 0);
-            int down = fromBooking.getIntExtra("down", 0);
-            int balance = fromBooking.getIntExtra("balance", 0);
+                db.close();
 
-            String gcashRef = etGcashRef.getText().toString().trim();
-            String cardRef = etCardRef.getText().toString().trim();
+                Toast.makeText(this, "Payment Successful!", Toast.LENGTH_SHORT).show();
 
-            String status;
+                Intent i = new Intent(PaymentActivity.this, ReceiptActivity.class);
+                i.putExtra("name", name);
+                i.putExtra("property", property);
+                i.putExtra("down", down);
+                i.putExtra("status", "Paid");
+                i.putExtra("payment", "E-Wallet");
+                startActivity(i);
+                finish();
 
-
-            if (payment.equals("Cash")) {
-                status = "Pay on Arrival";
+            } catch (Exception e) {
+                Toast.makeText(this, "DB Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
             }
-
-            else if (payment.equals("GCash")) {
-
-                if (gcashRef.isEmpty()) {
-                    etGcashRef.setError("Enter GCash reference number");
-                    return;
-                }
-
-                if (down <= 0) {
-                    Toast.makeText(this, "GCash requires payment", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                status = "Paid via GCash (Ref: " + gcashRef + ")";
-            }
-
-            else if (payment.equals("Card")) {
-
-                if (cardRef.isEmpty()) {
-                    etCardRef.setError("Enter Card reference");
-                    return;
-                }
-
-                if (down < 100) {
-                    Toast.makeText(this, "Minimum ₱100 for Card", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                status = "Paid via Card (Ref: " + cardRef + ")";
-            }
-
-            else {
-                Toast.makeText(this, "Select payment method", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-
-            Intent i = new Intent(this, ReceiptActivity.class);
-
-            i.putExtra("name", name);
-            i.putExtra("contact", contact);
-            i.putExtra("property", property);
-            i.putExtra("location", location);
-            i.putExtra("checkin", checkin);
-            i.putExtra("checkout", checkout);
-
-            i.putExtra("total", total);
-            i.putExtra("down", down);
-            i.putExtra("balance", balance);
-
-            i.putExtra("payment", payment);
-            i.putExtra("status", status);
-
-            startActivity(i);
-            finish();
         });
     }
 }

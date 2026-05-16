@@ -2,6 +2,8 @@ package com.example.finalsactivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.*;
 
@@ -22,6 +24,11 @@ public class BookingActivity extends AppCompatActivity {
     Calendar checkInCal = Calendar.getInstance();
     Calendar checkOutCal = Calendar.getInstance();
 
+    Database dbHelper;
+    SQLiteDatabase db;
+
+    String username = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +44,23 @@ public class BookingActivity extends AppCompatActivity {
         cbTerms = findViewById(R.id.cbTerms);
         btnBook = findViewById(R.id.btnBook);
 
-        String property = getIntent().getStringExtra("property");
-        String location = getIntent().getStringExtra("location");
+        dbHelper = new Database(this);
+        db = dbHelper.getReadableDatabase();
 
-        txtLocation.setText(location);
+        Intent intent = getIntent();
+
+        String property = intent.getStringExtra("property");
+        String location = intent.getStringExtra("location");
+
+        username = intent.getStringExtra("username");
+
+        if (username == null || username.isEmpty()) {
+            Toast.makeText(this, "Username missing!", Toast.LENGTH_LONG).show();
+        }
+
+        txtLocation.setText(location != null ? location : "No location");
+
+        loadUserData();
 
         etCheckIn.setOnClickListener(v -> {
             Calendar today = Calendar.getInstance();
@@ -80,31 +100,46 @@ public class BookingActivity extends AppCompatActivity {
                 return;
             }
 
-            if (etName.getText().toString().isEmpty()
-                    || etContact.getText().toString().length() != 11) {
-                Toast.makeText(this, "Fill all fields correctly", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            int days = getDays();
             int down = (int) (total * 0.30);
             int balance = total - down;
 
-            Intent intent = new Intent(this, PaymentActivity.class);
+            Intent i = new Intent(this, PaymentActivity.class);
 
-            intent.putExtra("name", etName.getText().toString());
-            intent.putExtra("contact", etContact.getText().toString());
-            intent.putExtra("property", property);
-            intent.putExtra("location", location);
-            intent.putExtra("checkin", etCheckIn.getText().toString());
-            intent.putExtra("checkout", etCheckOut.getText().toString());
-            intent.putExtra("total", total);
-            intent.putExtra("down", down);
-            intent.putExtra("balance", balance);
+            i.putExtra("name", etName.getText().toString());
+            i.putExtra("contact", etContact.getText().toString());
+            i.putExtra("property", property);
+            i.putExtra("location", location);
+            i.putExtra("checkin", etCheckIn.getText().toString());
+            i.putExtra("checkout", etCheckOut.getText().toString());
+            i.putExtra("total", total);
+            i.putExtra("down", down);
+            i.putExtra("balance", balance);
 
-            startActivity(intent);
+            startActivity(i);
             finish();
         });
+    }
+
+    private void loadUserData() {
+
+        if (username == null || username.isEmpty()) return;
+
+        Cursor c = db.rawQuery(
+                "SELECT fullname, contact FROM users WHERE username=?",
+                new String[]{username}
+        );
+
+        if (c.moveToFirst()) {
+            etName.setText(c.getString(0));
+            etContact.setText(c.getString(1));
+
+            etName.setEnabled(false);
+            etContact.setEnabled(false);
+        } else {
+            Toast.makeText(this, "User not found in DB", Toast.LENGTH_SHORT).show();
+        }
+
+        c.close();
     }
 
     private void calculateTotal() {
@@ -117,10 +152,5 @@ public class BookingActivity extends AppCompatActivity {
         total = days * rate;
 
         txtTotal.setText("Total: ₱" + total);
-    }
-
-    private int getDays() {
-        long diff = checkOutCal.getTimeInMillis() - checkInCal.getTimeInMillis();
-        return Math.max((int) (diff / (1000 * 60 * 60 * 24)), 1);
     }
 }

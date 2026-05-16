@@ -3,19 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FBE7A1">
+    android:background="#F5F7FB">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:padding="16dp"
-        android:layout_gravity="center">
+        android:gravity="center">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="16dp"
-            app:cardElevation="10dp">
+            app:cardElevation="10dp"
+            android:padding="16dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -23,52 +25,77 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
+                <!-- IMAGE -->
                 <ImageView
                     android:id="@+id/imgRoom"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_launcher_background"/>
+                    android:src="@drawable/loft1" />
 
+                <!-- ROOM NAME -->
                 <TextView
                     android:id="@+id/txtRoomName"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Dorm Name"
-                    android:textSize="22sp"
                     android:textStyle="bold"
-                    android:layout_marginTop="10dp"/>
+                    android:textSize="20sp"
+                    android:layout_marginTop="10dp" />
 
+                <!-- LOCATION -->
                 <TextView
                     android:id="@+id/txtLocation"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Location"
-                    android:textStyle="bold"
-                    android:layout_marginTop="4dp"/>
+                    android:layout_marginTop="5dp"
+                    android:padding="10dp"
+                    android:background="#EFEFEF" />
 
+                <!-- AVAILABILITY -->
+                <TextView
+                    android:id="@+id/txtAvailability"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Checking availability..."
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"
+                    android:padding="10dp"
+                    android:background="#FFF3CD"
+                    android:textColor="#000" />
+
+                <!-- TYPE -->
                 <TextView
                     android:id="@+id/txtType"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Type"
-                    android:layout_marginTop="4dp"/>
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:background="#EFEFEF" />
 
+                <!-- PRICE -->
                 <TextView
                     android:id="@+id/txtPrice"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="₱550 / day"
-                    android:textColor="#2E7D32"
+                    android:text="Price"
                     android:textStyle="bold"
-                    android:layout_marginTop="4dp"/>
+                    android:layout_marginTop="5dp"
+                    android:padding="10dp"
+                    android:background="#E8EEF7" />
 
+                <!-- DETAILS -->
                 <TextView
                     android:id="@+id/txtDetails"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Details"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginTop="5dp"
+                    android:padding="10dp" />
 
                 <!-- STAY TYPE -->
                 <TextView
@@ -76,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:text="Select Stay Type"
                     android:textStyle="bold"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginTop="12dp" />
 
                 <RadioGroup
                     android:id="@+id/radioStayType"
@@ -84,38 +111,36 @@
                     android:layout_height="wrap_content">
 
                     <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:id="@+id/rbTransient"
-                        android:text="Transient (Daily Stay)"
-                        android:checked="true"/>
-
-
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Transient (₱550/day)" />
 
                     <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:id="@+id/rbBedspace"
-                        android:text="Bedspace (Shared Long Term)"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bedspace (₱3500/month)" />
                 </RadioGroup>
 
                 <!-- ADVANCE PAYMENT -->
                 <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:id="@+id/cbAdvancePay"
-                    android:text="1 Month Advance Payment Required"
-                    android:layout_marginTop="8dp"
-                    android:visibility="gone"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pay Advance (Required for Bedspace)"
+                    android:layout_marginTop="10dp" />
 
+                <!-- BOOK BUTTON -->
                 <Button
                     android:id="@+id/btnBookNow"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:text="Book Now"
-                    android:layout_marginTop="12dp"
-                    android:backgroundTint="#FFE18A"
-                    android:textColor="#000"/>
+                    android:textStyle="bold"
+                    android:backgroundTint="#FFD54F"
+                    android:textColor="#000"
+                    android:layout_marginTop="15dp" />
 
             </LinearLayout>
 
