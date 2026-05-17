@@ -9,7 +9,6 @@
     android:background="?attr/selectableItemBackground"
     android:clickable="true">
 
-    <!-- Unread Dot -->
     <View
         android:id="@+id/dotIndicator"
         android:layout_width="10dp"
@@ -26,17 +25,17 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <!-- Title -->
         <TextView
-            android:id="@+id/tvNotifTitle"
+            android:id="@+id/txtTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15sp"
+            android:textColor="#222222"
+            android:textStyle="bold"
             android:maxLines="1"/>
 
-        <!-- Message -->
         <TextView
-            android:id="@+id/tvNotifMessage"
+            android:id="@+id/txtMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
@@ -44,13 +43,12 @@
             android:layout_marginTop="2dp"
             android:lineSpacingExtra="2dp"/>
 
-        <!-- Date -->
         <TextView
-            android:id="@+id/tvNotifDate"
+            android:id="@+id/txtDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-            android:textColor="@android:color/secondary_text_dark"
+            android:textColor="@android:color/darker_gray"
             android:layout_marginTop="4dp"/>
 
     </LinearLayout>
