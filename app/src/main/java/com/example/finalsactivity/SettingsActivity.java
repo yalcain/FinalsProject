@@ -56,8 +56,8 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         layoutPayment.setOnClickListener(v -> {
-            // Open Payment Methods
-            startActivity(new Intent(SettingsActivity.this, UserPayment.class));
+            // ✅ NAITAMA NA: Ginamit ang PaymentActivity.class na mayroon ka sa project mo
+            startActivity(new Intent(SettingsActivity.this, PaymentActivity.class));
         });
 
         layoutLanguage.setOnClickListener(v -> {
