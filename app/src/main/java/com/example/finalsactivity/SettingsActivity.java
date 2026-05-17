@@ -17,7 +17,6 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        // Setup Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
@@ -26,7 +25,6 @@ public class SettingsActivity extends AppCompatActivity {
             toolbar.setNavigationOnClickListener(v -> finish()); // go back when click arrow
         }
 
-        // Link all clickable sections
         layoutAccount = findViewById(R.id.layoutAccount);
         layoutNotification = findViewById(R.id.layoutNotification);
         layoutDisplay = findViewById(R.id.layoutDisplay);
@@ -36,7 +34,6 @@ public class SettingsActivity extends AppCompatActivity {
         layoutHelp = findViewById(R.id.layoutHelp);
         layoutLogout = findViewById(R.id.layoutLogout);
 
-        // --- CLICK ACTIONS ---
         layoutAccount.setOnClickListener(v -> {
             // Open Profile / Account Edit screen
             startActivity(new Intent(SettingsActivity.this, TenantsProfileActivity.class));
