@@ -23,7 +23,6 @@
             android:elevation="4dp"
             android:layout_marginBottom="20dp"/>
 
-        <!-- Payment Method -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,7 +37,6 @@
             android:background="@android:drawable/btn_dropdown"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Amount -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,7 +53,6 @@
             android:background="@android:drawable/edit_text"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Reference Number -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -72,7 +69,6 @@
             android:background="@android:drawable/edit_text"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Upload Proof -->
         <Button
             android:id="@+id/btnUpload"
             android:layout_width="match_parent"
@@ -91,9 +87,8 @@
             android:layout_marginBottom="20dp"
             android:background="#E0E0E0"/>
 
-        <!-- Submit -->
         <Button
-            android:id="@+id/btnSubmit"
+            android:id="@+id/btnPay"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:text="✅ SUBMIT PAYMENT"
