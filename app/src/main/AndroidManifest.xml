@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Add this for reading images (for maintenance upload) -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,6 +18,7 @@
         android:theme="@style/Theme.FinalsActivity"
         tools:targetApi="31">
 
+        <!-- LAUNCHER SCREEN -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -22,28 +28,43 @@
             </intent-filter>
         </activity>
 
+        <!-- AUTH -->
         <activity android:name=".LoginActivity" android:exported="false" />
         <activity android:name=".RegisterActivity" android:exported="false" />
-        <activity android:name=".homeActivity" android:exported="false" />
-        <activity android:name=".DormDetailsActivity" android:exported="false" />
-        <activity android:name=".BookingActivity" android:exported="false" />
+
+        <!-- TENANT SCREENS -->
+        <activity android:name=".TenantDashboard" android:exported="false" /> <!-- ✅ You had wrong name before -->
+        <activity android:name=".TenantsProfileActivity" android:exported="false" />
+        <activity android:name=".UserPayment" android:exported="false" />
         <activity android:name=".PaymentActivity" android:exported="false" />
         <activity android:name=".ReceiptActivity" android:exported="false" />
         <activity android:name=".NotificationActivity" android:exported="false" />
         <activity android:name=".Maintenance" android:exported="false" />
-        <activity android:name=".TenantsProfileActivity" android:exported="false" />
-        <activity android:name=".AccountActivity" android:exported="false" />
-
-        <activity android:name=".AdminDashboard" android:exported="false" />
-        <activity android:name=".AdminPostActivity" android:exported="false" />
-        <activity android:name=".AdminPaymentView" android:exported="false" />
-        <activity android:name=".AdminPayment" android:exported="false" />
-
+        <activity android:name=".BookingActivity" android:exported="false" />
+        <activity android:name=".DormDetailsActivity" android:exported="false" />
+        <activity android:name=".homeActivity" android:exported="false" />
         <activity android:name=".SdDormActivity" android:exported="false" />
         <activity android:name=".Loft22Activity" android:exported="false" />
         <activity android:name=".MilfloresBHActivity" android:exported="false" />
         <activity android:name=".TheDormitoryActivity" android:exported="false" />
         <activity android:name=".Reservation" android:exported="false" />
 
+        <!-- ADMIN SCREENS -->
+        <activity android:name=".AdminDashboard" android:exported="false" />
+        <activity android:name=".AdminPaymentActivity" android:exported="false" /> <!-- ✅ FIXED NAME (was wrong) -->
+        <activity android:name=".AdminPostActivity" android:exported="false" />
+        <activity android:name=".ManageUsersActivity" android:exported="false" />
+        <activity android:name=".ManageRoomsActivity" android:exported="false" />
+        <activity android:name=".PostAnnouncementActivity" android:exported="false" />
+        <activity android:name=".AddPlaceActivity" android:exported="false" />
+
+        <!-- SETTINGS -->
+        <activity android:name=".SettingsActivity" android:exported="false" />
+
+        <!-- ❌ REMOVED: VerificationActivity (you deleted this file!) -->
+        <!-- ❌ REMOVED: AdminPayment / AdminPaymentView (duplicate/wrong names) -->
+        <!-- ❌ REMOVED: AccountActivity (if you don't have this file) -->
+
     </application>
+
 </manifest>

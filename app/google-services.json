@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "617998753091",
+    "project_id": "finalsactivity-c219e",
+    "storage_bucket": "finalsactivity-c219e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:617998753091:android:5114e828ffcd0378e6a3f6",
+        "android_client_info": {
+          "package_name": "com.example.finalsactivity"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApr6K2WpfYuS2a3STBZ2Qk5RhdqLxGa_M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

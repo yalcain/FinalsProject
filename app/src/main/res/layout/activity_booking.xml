@@ -1,134 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FB">
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#F5F7FA">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tvRoomName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:text="Room Name"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="16dp"
+        android:background="#FFFFFF"
+        android:elevation="4dp"
+        android:layout_marginBottom="20dp"/>
 
-        <!-- TITLE -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Booking Form"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:textColor="#16396B" />
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="₱ 0.00"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_green_dark"
+        android:padding="10dp"
+        android:layout_marginBottom="16dp"/>
 
-        <!-- PROPERTY -->
-        <TextView
-            android:id="@+id/txtLocation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Property Location"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#444"
-            android:layout_marginTop="10dp" />
+    <TextView
+        android:id="@+id/tvDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Room details, capacity, features, etc."
+        android:textSize="14sp"
+        android:lineSpacingExtra="4dp"
+        android:background="#FFFFFF"
+        android:padding="12dp"
+        android:layout_marginBottom="30dp"/>
 
-        <!-- ROOM TYPE -->
-        <TextView
-            android:id="@+id/txtRoomType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Transient"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="#4CAF50"
-            android:layout_marginTop="8dp" />
+    <Button
+        android:id="@+id/btnProceedPayment"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="Proceed to Payment"
+        android:backgroundTint="#2196F3"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"/>
 
-        <!-- NAME -->
-        <EditText
-            android:id="@+id/etName"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginTop="20dp"
-            android:hint="Full Name"
-            android:padding="15dp"
-            android:background="@android:drawable/edit_text"
-            android:inputType="textPersonName" />
-
-        <!-- CONTACT -->
-        <EditText
-            android:id="@+id/etContact"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginTop="12dp"
-            android:hint="Contact Number"
-            android:maxLength="11"
-            android:padding="15dp"
-            android:background="@android:drawable/edit_text"
-            android:inputType="phone" />
-
-        <!-- DATE LAYOUT -->
-        <LinearLayout
-            android:id="@+id/layoutDates"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- CHECK-IN -->
-            <EditText
-                android:id="@+id/etCheckIn"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginTop="12dp"
-                android:hint="Check-In Date"
-                android:focusable="false"
-                android:clickable="true"
-                android:padding="15dp"
-                android:background="@android:drawable/edit_text" />
-
-            <!-- CHECK-OUT -->
-            <EditText
-                android:id="@+id/etCheckOut"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginTop="12dp"
-                android:hint="Check-Out Date"
-                android:focusable="false"
-                android:clickable="true"
-                android:padding="15dp"
-                android:background="@android:drawable/edit_text" />
-
-        </LinearLayout>
-
-        <!-- TOTAL -->
-        <TextView
-            android:id="@+id/txtTotal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Total: ₱0"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="#000"
-            android:layout_marginTop="20dp" />
-
-        <!-- TERMS -->
-        <CheckBox
-            android:id="@+id/cbTerms"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="I agree to the terms and conditions"
-            android:layout_marginTop="20dp" />
-
-        <!-- BOOK BUTTON -->
-        <Button
-            android:id="@+id/btnBook"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="Confirm Booking"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="#000"
-            android:backgroundTint="#FFD54F"
-            android:layout_marginTop="25dp" />
-
-    </LinearLayout>
-
-</ScrollView>
+</LinearLayout>

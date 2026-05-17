@@ -3,4 +3,13 @@
     <string name="app_name">FinalsActivity</string>
     <string name="open">Open Navigation</string>
     <string name="close">Close Navigation</string>
+
+    <string-array name="status_options">
+        <item>Active</item>
+        <item>Inactive</item>
+    </string-array>
+
+    <string name="price_format">₱ %s</string>
+    <string name="total_format">Total: ₱ %s</string>
+    <string name="days_format">%d Days</string>
 </resources>

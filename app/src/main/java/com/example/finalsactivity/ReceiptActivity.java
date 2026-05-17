@@ -31,7 +31,7 @@ public class ReceiptActivity extends AppCompatActivity {
         txtReceipt.setText(display);
 
         btnHome.setOnClickListener(v -> {
-            Intent intent = new Intent(ReceiptActivity.this, homeActivity.class);
+            Intent intent = new Intent(ReceiptActivity.this, MainActivity2.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
@@ -41,7 +41,7 @@ public class ReceiptActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(this, homeActivity.class);
+        Intent intent = new Intent(this, MainActivity2.class);
         startActivity(intent);
         finish();
     }

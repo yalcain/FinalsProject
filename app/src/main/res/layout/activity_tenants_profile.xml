@@ -1,137 +1,235 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F4F7FB">
+    android:background="#F5F7FB"
+    android:padding="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:orientation="vertical">
 
-        <LinearLayout
+        <!-- Title -->
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="My Profile"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#16396B"
             android:gravity="center"
-            android:orientation="vertical">
+            android:paddingVertical="16dp"/>
 
-            <ImageView
-                android:id="@+id/imgProfile"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:src="@android:drawable/sym_def_app_icon"
-                android:background="#DDE6F5"
-                android:padding="20dp" />
-
-            <TextView
-                android:id="@+id/txtName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tenant Name"
-                android:textColor="#000"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:paddingTop="10dp"/>
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#FFFFFF"
-            android:padding="16dp"
-            android:layout_marginTop="20dp">
+            android:text="Personal Information"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#333"
+            android:layout_marginBottom="8dp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Personal Information"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:textColor="#000"/>
+        <!-- Full Name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Full Name"
+            android:textSize="14sp"
+            android:textColor="#555"/>
+        <EditText
+            android:id="@+id/etFullname"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Enter your full name"
+            android:inputType="textPersonName"
+            android:background="@android:drawable/edit_text"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="4dp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Contact Number"
-                android:textStyle="bold"
-                android:paddingTop="10dp"/>
+        <!-- Username (Read-only) -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username"
+            android:textSize="14sp"
+            android:textColor="#555"/>
+        <EditText
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Username"
+            android:inputType="text"
+            android:background="@android:drawable/edit_text"
+            android:padding="12dp"
+            android:enabled="false"
+            android:textColor="#888"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="4dp"/>
 
-            <EditText
-                android:id="@+id/etContact"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter Contact Number"
-                android:background="#F1F3F6"
-                android:padding="12dp"/>
+        <!-- Age -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Age"
+            android:textSize="14sp"
+            android:textColor="#555"/>
+        <EditText
+            android:id="@+id/etAge"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="e.g. 22"
+            android:inputType="number"
+            android:background="@android:drawable/edit_text"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="4dp"/>
 
-            <Button
-                android:id="@+id/btnUpdate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Update Contact"
-                android:layout_marginTop="15dp"/>
-        </LinearLayout>
+        <!-- Gender -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender"
+            android:textSize="14sp"
+            android:textColor="#555"/>
+        <EditText
+            android:id="@+id/etGender"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="e.g. Male / Female / Others"
+            android:inputType="text"
+            android:background="@android:drawable/edit_text"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="4dp"/>
 
-        <LinearLayout
+        <!-- Contact -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact Number"
+            android:textSize="14sp"
+            android:textColor="#555"/>
+        <EditText
+            android:id="@+id/etContact"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="11-digit mobile number"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:background="@android:drawable/edit_text"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="4dp"/>
+
+        <!-- Email -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email Address"
+            android:textSize="14sp"
+            android:textColor="#555"/>
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="example@email.com"
+            android:inputType="textEmailAddress"
+            android:background="@android:drawable/edit_text"
+            android:padding="12dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="4dp"/>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDD"
+            android:layout_marginVertical="12dp"/>
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#FFFFFF"
-            android:padding="16dp"
-            android:layout_marginTop="20dp">
+            android:text="Change Password (Optional)"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#333"
+            android:layout_marginBottom="8dp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Assigned Room Details"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:textColor="#000"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Current Password"
+            android:textSize="14sp"
+            android:textColor="#555"/>
+        <EditText
+            android:id="@+id/etCurrentPass"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Enter current password"
+            android:inputType="textPassword"
+            android:background="@android:drawable/edit_text"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="4dp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Room Number"
-                android:textStyle="bold"
-                android:paddingTop="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Password"
+            android:textSize="14sp"
+            android:textColor="#555"/>
+        <EditText
+            android:id="@+id/etNewPass"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Enter new password (min 6 chars)"
+            android:inputType="textPassword"
+            android:background="@android:drawable/edit_text"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="4dp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtRoom"
-                android:text="101"
-                android:textSize="16sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirm New Password"
+            android:textSize="14sp"
+            android:textColor="#555"/>
+        <EditText
+            android:id="@+id/etConfirmPass"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Re-enter new password"
+            android:inputType="textPassword"
+            android:background="@android:drawable/edit_text"
+            android:padding="12dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="4dp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Monthly Rent"
-                android:textStyle="bold"
-                android:paddingTop="10dp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtRent"
-                android:text="₱5000"
-                android:textSize="16sp"/>
+        <!-- Buttons -->
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Save Changes"
+            android:background="#2196F3"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:elevation="2dp"
+            android:layout_marginBottom="8dp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Due Date"
-                android:textStyle="bold"
-                android:paddingTop="10dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtDue"
-                android:text="Every 5th of Month"
-                android:textSize="16sp"/>
-        </LinearLayout>
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Cancel"
+            android:background="#EEEEEE"
+            android:textColor="#333333"
+            android:textSize="16sp"/>
 
     </LinearLayout>
 </ScrollView>

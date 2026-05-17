@@ -11,9 +11,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
+
     Button btnLogin;
-    TextView txtCreate;
+    TextView txtCreateAccount;
     EditText etEmail, etPassword;
+    Database dbHelper;
     SQLiteDatabase db;
 
     @Override
@@ -21,39 +23,76 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // Initialize views — MATCH YOUR XML IDS
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
-        txtCreate = findViewById(R.id.txtCreate);
+        txtCreateAccount = findViewById(R.id.txtCreate);
 
-        db = openOrCreateDatabase("DormDB", MODE_PRIVATE, null);
-        db.execSQL("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, fullname TEXT, age INTEGER, gender TEXT, contact TEXT, email TEXT UNIQUE, password TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS payments (id INTEGER PRIMARY KEY AUTOINCREMENT, userName TEXT, property TEXT, amount INTEGER, method TEXT, status TEXT, date TEXT)");
+        // Initialize database
+        dbHelper = new Database(this);
+        db = dbHelper.getReadableDatabase();
 
-        btnLogin.setOnClickListener(v -> {
-            String email = etEmail.getText().toString().trim();
-            String password = etPassword.getText().toString().trim();
+        // Click Listeners
+        btnLogin.setOnClickListener(v -> loginUser());
+        txtCreateAccount.setOnClickListener(v ->
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class))
+        );
+    }
 
-            if(email.equals("admin") && password.equals("admin123")) {
-                startActivity(new Intent(LoginActivity.this, AdminDashboard.class));
-                return;
-            }
+    // Normal Email/Password Login
+    private void loginUser() {
+        String email = etEmail.getText().toString().trim();
+        String password = etPassword.getText().toString().trim();
 
-            if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
-                return;
-            }
+        if (email.isEmpty()) {
+            etEmail.setError("Email is required");
+            etEmail.requestFocus();
+            return;
+        }
+        if (password.isEmpty()) {
+            etPassword.setError("Password is required");
+            etPassword.requestFocus();
+            return;
+        }
 
-            Cursor cursor = db.rawQuery("SELECT * FROM users WHERE email=? AND password=?", new String[]{email, password});
-            if (cursor.moveToFirst()) {
-                startActivity(new Intent(this, homeActivity.class));
-                finish();
-            } else {
-                Toast.makeText(this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
-            }
-            cursor.close();
-        });
+        // ✅ ADMIN LOGIN (keep your code)
+        if (email.equalsIgnoreCase("admin@dorm.com") && password.equals("admin123")) {
+            Toast.makeText(this, "Welcome Admin", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(LoginActivity.this, AdminDashboard.class));
+            finish();
+            return;
+        }
 
-        txtCreate.setOnClickListener(v -> startActivity(new Intent(this, RegisterActivity.class)));
+        // ✅ TENANT LOGIN — FIXED: No MainActivity2, go to TenantDashboard
+        Cursor cursor = db.query(
+                Database.TABLE_USERS,
+                new String[]{Database.COL_USER_ID, Database.COL_USER_FULLNAME},
+                Database.COL_USER_EMAIL + "=? AND " + Database.COL_USER_PASSWORD + "=?",
+                new String[]{email, password},
+                null, null, null
+        );
+
+        if (cursor.moveToFirst()) {
+            String fullName = cursor.getString(cursor.getColumnIndexOrThrow(Database.COL_USER_FULLNAME));
+            Toast.makeText(this, "Welcome " + fullName, Toast.LENGTH_SHORT).show();
+
+            // ✅ FIXED: GO TO TENANT DASHBOARD (NOT MainActivity2)
+            Intent intent = new Intent(this, TenantsProfileActivity.class);
+            intent.putExtra("username", email); // pass user data
+            startActivity(intent);
+            finish();
+        } else {
+            Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
+        }
+        cursor.close();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (db != null && db.isOpen()) {
+            db.close();
+        }
     }
 }

@@ -1,47 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.cardview.widget.CardView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    app:cardCornerRadius="15dp"
-    app:cardElevation="6dp">
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:gravity="top"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true">
+
+    <!-- Unread Dot -->
+    <View
+        android:id="@+id/dotIndicator"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="12dp"
+        android:background="@android:color/holo_blue_dark"
+        android:shape="oval"
+        android:visibility="gone"/>
 
     <LinearLayout
-        android:orientation="vertical"
-        android:padding="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
+        <!-- Title -->
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/tvNotifTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/txtTitle"
-            android:text="Rent Reminder"
-            android:textStyle="bold"
-            android:textSize="20sp"/>
+            android:textSize="15sp"
+            android:maxLines="1"/>
 
+        <!-- Message -->
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/tvNotifMessage"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/txtMessage"
-            android:text="Please pay your rent on time"/>
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginTop="2dp"
+            android:lineSpacingExtra="2dp"/>
 
+        <!-- Date -->
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/tvNotifDate"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/txtType"
-            android:text="Type: Reminder"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtDate"
-            android:text="2026-01-01"/>
+            android:textSize="12sp"
+            android:textColor="@android:color/secondary_text_dark"
+            android:layout_marginTop="4dp"/>
 
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</LinearLayout>

@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF9E3">
+    android:background="#F5F6F8">
 
-    <!-- MAIN -->
+    <!-- MAIN CONTENT WRAPPER -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <!-- TOOLBAR -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#FFF9E3"
-            android:title="Home"
-            android:titleTextColor="#FFFFFF"/>
+            android:background="#FFFFFF"
+            app:titleTextColor="#222222"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -32,174 +34,434 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
+                <!-- WELCOME TEXT -->
                 <TextView
                     android:id="@+id/txtWelcome"
-                    android:text="Welcome!"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="#222222"/>
 
-                <!-- GRID 2 COLUMN -->
-                <GridLayout
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Find your best place to stay"
+                    android:textSize="14sp"
+                    android:textColor="#777777"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- CATEGORY TABS -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:columnCount="2"
-                    android:useDefaultMargins="true"
-                    android:alignmentMode="alignMargins">
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="24dp"
+                    android:weightSum="3">
 
-                    <!-- CARD 1 -->
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/card1"
+                    <TextView
                         android:layout_width="0dp"
-                        android:layout_height="160dp"
-                        android:layout_columnWeight="1"
+                        android:layout_weight="1"
+                        android:layout_height="36dp"
+                        android:text="All"
+                        android:background="#2196F3"
+                        android:textColor="#FFFFFF"
+                        android:gravity="center"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="4dp"
+                        android:elevation="2dp"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="36dp"
+                        android:text="Bedspace"
+                        android:background="#FFFFFF"
+                        android:textColor="#555555"
+                        android:gravity="center"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="4dp"
+                        android:elevation="1dp"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="36dp"
+                        android:text="Transient"
+                        android:background="#FFFFFF"
+                        android:textColor="#555555"
+                        android:gravity="center"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="4dp"
+                        android:elevation="1dp"/>
+
+                </LinearLayout>
+
+                <!-- POPULAR SECTION -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Popular"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#222222"
+                    android:layout_marginBottom="12dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- CARD SD DORM 2 -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardSD"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="180dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="3dp"
                         android:foreground="?attr/selectableItemBackground"
                         android:clickable="true"
-                        android:focusable="true"
-                        app:cardCornerRadius="12dp"
-                        app:cardElevation="6dp"
-                        >
+                        android:focusable="true">
 
-                        <FrameLayout
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
 
                             <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="110dp"
                                 android:src="@drawable/bedspace"
-                                android:scaleType="centerCrop"
-                                android:clickable="false"
-                                android:focusable="false"/>
+                                android:scaleType="centerCrop"/>
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="SD Dorm 2"
-                                android:textColor="#FFFFFF"
-                                android:textStyle="bold"
-                                android:layout_gravity="bottom|start"
-                                android:padding="10dp"/>
-                        </FrameLayout>
+                                android:orientation="vertical"
+                                android:padding="10dp">
 
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="SD Dorm 2"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#222"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="19 Blueberry ext., St. Aranai Village, Brgy. Ususan City"
+                                    android:textSize="11sp"
+                                    android:textColor="#777"
+                                    android:maxLines="1"
+                                    android:ellipsize="end"/>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="4dp"
+                                    android:gravity="center_vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="₱2,500/mo"
+                                        android:textSize="12sp"
+                                        android:textColor="#2196F3"
+                                        android:textStyle="bold"/>
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="1dp"
+                                        android:layout_weight="1"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="⭐ 4.8"
+                                        android:textSize="12sp"
+                                        android:textColor="#777"/>
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <!-- CARD 2 -->
+                    <!-- CARD LOFT 22 -->
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card2"
+                        android:id="@+id/cardLoft"
                         android:layout_width="0dp"
-                        android:layout_height="160dp"
-                        android:layout_columnWeight="1"
+                        android:layout_weight="1"
+                        android:layout_height="180dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="3dp"
                         android:foreground="?attr/selectableItemBackground"
                         android:clickable="true"
-                        android:focusable="true"
-                        app:cardCornerRadius="12dp"
-                        app:cardElevation="6dp">
+                        android:focusable="true">
 
-                        <FrameLayout
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
 
                             <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="110dp"
                                 android:src="@drawable/trans"
-                                android:scaleType="centerCrop"
-                                android:clickable="false"
-                                android:focusable="false"/>
+                                android:scaleType="centerCrop"/>
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Loft 22"
-                                android:textColor="#FFFFFF"
-                                android:textStyle="bold"
-                                android:layout_gravity="bottom|start"
-                                android:padding="10dp"/>
-                        </FrameLayout>
+                                android:orientation="vertical"
+                                android:padding="10dp">
 
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Loft 22"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#222"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="15 Blue Falcon St., Rizal Taguig City"
+                                    android:textSize="11sp"
+                                    android:textColor="#777"
+                                    android:maxLines="1"
+                                    android:ellipsize="end"/>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="4dp"
+                                    android:gravity="center_vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="₱500/night"
+                                        android:textSize="12sp"
+                                        android:textColor="#2196F3"
+                                        android:textStyle="bold"/>
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="1dp"
+                                        android:layout_weight="1"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="⭐ 4.9"
+                                        android:textSize="12sp"
+                                        android:textColor="#777"/>
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <!-- CARD 3 -->
+                </LinearLayout>
+
+                <!-- NEAR YOU SECTION -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Near You"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#222"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="12dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- CARD THE DORMITORY (Palar) -->
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card3"
+                        android:id="@+id/cardPalar"
                         android:layout_width="0dp"
-                        android:layout_height="160dp"
-                        android:layout_columnWeight="1"
+                        android:layout_weight="1"
+                        android:layout_height="180dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="3dp"
                         android:foreground="?attr/selectableItemBackground"
                         android:clickable="true"
-                        android:focusable="true"
-                        app:cardCornerRadius="12dp"
-                        app:cardElevation="6dp">
+                        android:focusable="true">
 
-                        <FrameLayout
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
 
                             <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="110dp"
                                 android:src="@drawable/bedspace1"
-                                android:scaleType="centerCrop"
-                                android:clickable="false"
-                                android:focusable="false"/>
+                                android:scaleType="centerCrop"/>
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Palar"
-                                android:textColor="#FFFFFF"
-                                android:textStyle="bold"
-                                android:layout_gravity="bottom|start"
-                                android:padding="10dp"/>
-                        </FrameLayout>
+                                android:orientation="vertical"
+                                android:padding="10dp">
 
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="The Dormitory"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#222"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="C2 Mt.Apo St., Palar Village, Brgy.Pinagsama Taguig City"
+                                    android:textSize="11sp"
+                                    android:textColor="#777"
+                                    android:maxLines="1"
+                                    android:ellipsize="end"/>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="4dp"
+                                    android:gravity="center_vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="₱2,200/mo"
+                                        android:textSize="12sp"
+                                        android:textColor="#2196F3"
+                                        android:textStyle="bold"/>
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="1dp"
+                                        android:layout_weight="1"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="⭐ 4.8"
+                                        android:textSize="12sp"
+                                        android:textColor="#777"/>
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <!-- CARD 4 -->
+                    <!-- CARD MILFLORES BOARDING HOUSE -->
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card4"
+                        android:id="@+id/cardMilflores"
                         android:layout_width="0dp"
-                        android:layout_height="160dp"
-                        android:layout_columnWeight="1"
+                        android:layout_weight="1"
+                        android:layout_height="180dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="3dp"
                         android:foreground="?attr/selectableItemBackground"
                         android:clickable="true"
-                        android:focusable="true"
-                        app:cardCornerRadius="12dp"
-                        app:cardElevation="6dp">
+                        android:focusable="true">
 
-                        <FrameLayout
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
 
                             <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="110dp"
                                 android:src="@drawable/bedspace2"
-                                android:scaleType="centerCrop"
-                                android:clickable="false"
-                                android:focusable="false"/>
+                                android:scaleType="centerCrop"/>
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Milflores"
-                                android:textColor="#FFFFFF"
-                                android:textStyle="bold"
-                                android:layout_gravity="bottom|start"
-                                android:padding="10dp"/>
-                        </FrameLayout>
+                                android:orientation="vertical"
+                                android:padding="10dp">
 
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Milflores Boarding House"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#222"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="B70 L30 Milflores St., Brgy. Taguig City"
+                                    android:textSize="11sp"
+                                    android:textColor="#777"
+                                    android:maxLines="1"
+                                    android:ellipsize="end"/>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="4dp"
+                                    android:gravity="center_vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="₱2,300/mo"
+                                        android:textSize="12sp"
+                                        android:textColor="#2196F3"
+                                        android:textStyle="bold"/>
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="1dp"
+                                        android:layout_weight="1"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="⭐ 4.6"
+                                        android:textSize="12sp"
+                                        android:textColor="#777"/>
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                </GridLayout>
+                </LinearLayout>
 
             </LinearLayout>
         </ScrollView>
 
+        <!-- ✅ BOTTOM NAVIGATION BAR -->
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNav"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="#FFFFFF"
+            app:itemIconTint="@color/bottom_nav_color"
+            app:itemTextColor="@color/bottom_nav_color"
+            app:menu="@menu/button_nav_menu"/>
+
     </LinearLayout>
 
+    <!-- NAVIGATION DRAWER -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationView"
         android:layout_width="wrap_content"

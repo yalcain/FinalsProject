@@ -1,26 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-        <item
-            android:id="@+id/nav_home"
-            android:title="Home"/>
-        <item
-            android:id="@+id/nav_tenant"
-            android:title="Profile"/>
-
-        <item
-            android:id="@+id/nav_payment"
-            android:title="Payment"/>
-        <item
-            android:id="@+id/nav_receipt"
-            android:title="Receipt"/>
-
-        <item
-            android:id="@+id/nav_notif"
-            android:title="Notification"/>
-
-        <item
-            android:id="@+id/nav_logout"
-            android:title="Logout"/>
+        <item android:id="@+id/nav_home" android:icon="@drawable/ic_home" android:title="Home"/>
+        <item android:id="@+id/nav_tenant" android:icon="@drawable/icon_tenants" android:title="Tenant Profile"/>
+        <item android:id="@+id/nav_payment" android:icon="@drawable/icon_payment" android:title="Payment History"/>
+        <item android:id="@+id/nav_receipt" android:icon="@drawable/icon_receipt" android:title="Receipt"/>
+        <item android:id="@+id/nav_notif" android:icon="@drawable/icon_notification" android:title="Notifications"/>
+        <item android:id="@+id/nav_add_place" android:icon="@drawable/ic_add" android:title="Add New Place"/>
+        <item android:id="@+id/nav_logout" android:icon="@drawable/icon_logout" android:title="Logout"/>
 
 </menu>

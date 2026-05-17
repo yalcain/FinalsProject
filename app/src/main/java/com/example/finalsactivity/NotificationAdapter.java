@@ -5,59 +5,59 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
-public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.ViewHolder> {
+public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder> {
 
-    Context context;
-    ArrayList<NotificationModel> list;
+    private Context context;
+    private ArrayList<NotificationModel> notificationList;
 
-    public NotificationAdapter(Context context, ArrayList<NotificationModel> list) {
+    public NotificationAdapter(Context context, ArrayList<NotificationModel> notificationList) {
         this.context = context;
-        this.list = list;
+        this.notificationList = notificationList;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        View view = LayoutInflater.from(context)
-                .inflate(R.layout.item_notification, parent, false);
-
-        return new ViewHolder(view);
+    public NotificationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.item_notification, parent, false);
+        return new NotificationViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NotificationViewHolder holder, int position) {
+        NotificationModel item = notificationList.get(position);
 
-        NotificationModel n = list.get(position);
+        holder.tvTitle.setText(item.getTitle());
+        holder.tvMessage.setText(item.getMessage());
+        holder.tvDate.setText(item.getDate());
 
-        holder.txtTitle.setText(n.title);
-        holder.txtMessage.setText(n.message);
-        holder.txtType.setText("Type: " + n.type);
-        holder.txtDate.setText(n.date);
+        // Color by type
+        int color;
+        switch (item.getType()) {
+            case "payment": color = ContextCompat.getColor(context, android.R.color.holo_blue_dark); break;
+            case "maintenance": color = ContextCompat.getColor(context, android.R.color.holo_orange_dark); break;
+            case "announcement": color = ContextCompat.getColor(context, android.R.color.holo_green_dark); break;
+            default: color = ContextCompat.getColor(context, android.R.color.darker_gray); break;
+        }
+        holder.tvTitle.setTextColor(color);
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return notificationList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-
-        TextView txtTitle, txtMessage, txtType, txtDate;
-
-        public ViewHolder(@NonNull View itemView) {
+    public static class NotificationViewHolder extends RecyclerView.ViewHolder {
+        TextView tvTitle, tvMessage, tvDate;
+        public NotificationViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            txtTitle = itemView.findViewById(R.id.txtTitle);
-            txtMessage = itemView.findViewById(R.id.txtMessage);
-            txtType = itemView.findViewById(R.id.txtType);
-            txtDate = itemView.findViewById(R.id.txtDate);
+            tvTitle = itemView.findViewById(R.id.tvNotifTitle);
+            tvMessage = itemView.findViewById(R.id.tvNotifMessage);
+            tvDate = itemView.findViewById(R.id.tvNotifDate);
         }
     }
 }

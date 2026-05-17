@@ -20,6 +20,8 @@ public class DormDetailsActivity extends AppCompatActivity {
 
     String property = "";
     String location = "";
+    String detailsFromIntent = ""; // ✅ Added
+    String ratingFromIntent = "";  // ✅ Added
     int imageRes;
 
     Database dbHelper;
@@ -48,19 +50,23 @@ public class DormDetailsActivity extends AppCompatActivity {
         rbBedspace = findViewById(R.id.rbBedspace);
         cbAdvancePay = findViewById(R.id.cbAdvancePay);
 
-        // INTENT SAFETY
+        // ✅ GET ALL DATA FROM INTENT
         Intent intent = getIntent();
         property = intent.getStringExtra("property");
         location = intent.getStringExtra("location");
-        imageRes = intent.getIntExtra("image", R.drawable.loft1);
+        detailsFromIntent = intent.getStringExtra("details");
+        ratingFromIntent = intent.getStringExtra("rating");
+        imageRes = intent.getIntExtra("image", R.drawable.bedspace);
 
         if (property == null) property = "Unknown Dorm";
         if (location == null) location = "Unknown Location";
+        if (detailsFromIntent == null) detailsFromIntent = "";
 
-        // SET UI
+        // ✅ SET UI WITH CORRECT DATA
         txtRoomName.setText(property);
         txtLocation.setText(location);
         imgRoom.setImageResource(imageRes);
+        txtDetails.setText(detailsFromIntent); // Shows exact text from home card
 
         rbTransient.setChecked(true);
         cbAdvancePay.setVisibility(CheckBox.GONE);
@@ -117,7 +123,6 @@ public class DormDetailsActivity extends AppCompatActivity {
 
     // CHECK AVAILABILITY
     private boolean isAvailable(String property, String type) {
-
         Cursor c = db.rawQuery(
                 "SELECT capacity, occupied FROM rooms WHERE property=? AND type=?",
                 new String[]{property, type}
@@ -140,20 +145,63 @@ public class DormDetailsActivity extends AppCompatActivity {
         );
     }
 
+    // ✅ UPDATED: Uses actual prices from your dorms
     private void updateDetails(String type) {
-
-        if ("Transient".equals(type)) {
-            txtType.setText("Transient Stay");
-            txtPrice.setText("₱550 / day");
-            txtDetails.setText("Daily stay rooms (check-in required)");
+        if (property.equals("SD Dorm 2")) {
+            if ("Transient".equals(type)) {
+                txtType.setText("Transient Stay");
+                txtPrice.setText("₱500 / night");
+                txtDetails.setText("Daily stay • Electric fan only • Check-in required");
+            } else {
+                txtType.setText("Bedspace");
+                txtPrice.setText("₱2,500 / month");
+                txtDetails.setText("Long-term • Shared room • No check-in needed");
+            }
+        } else if (property.equals("Loft 22")) {
+            if ("Transient".equals(type)) {
+                txtType.setText("Transient Stay");
+                txtPrice.setText("₱500 / night");
+                txtDetails.setText("Daily stay • Aircon • Check-in required");
+            } else {
+                txtType.setText("Bedspace");
+                txtPrice.setText("₱3,000 / month");
+                txtDetails.setText("Long-term • Private • No check-in needed");
+            }
+        } else if (property.equals("The Dormitory")) {
+            if ("Transient".equals(type)) {
+                txtType.setText("Transient Stay");
+                txtPrice.setText("₱450 / night");
+                txtDetails.setText("Daily stay • Electric fan • Check-in required");
+            } else {
+                txtType.setText("Bedspace");
+                txtPrice.setText("₱2,200 / month");
+                txtDetails.setText("Long-term • Shared room • No check-in needed");
+            }
+        } else if (property.equals("Milflores Boarding House")) {
+            if ("Transient".equals(type)) {
+                txtType.setText("Transient Stay");
+                txtPrice.setText("₱400 / night");
+                txtDetails.setText("Daily stay • Electric fan • Check-in required");
+            } else {
+                txtType.setText("Bedspace");
+                txtPrice.setText("₱2,300 / month");
+                txtDetails.setText("Long-term • Shared room • No check-in needed");
+            }
         } else {
-            txtType.setText("Bedspace");
-            txtPrice.setText("₱3500 / month");
-            txtDetails.setText("Long-term occupancy (NO check-in)");
+            // For newly added places
+            if ("Transient".equals(type)) {
+                txtType.setText("Transient Stay");
+                txtPrice.setText("₱500 / night");
+                txtDetails.setText("Daily stay • Check-in required");
+            } else {
+                txtType.setText("Bedspace");
+                txtPrice.setText("₱2,500 / month");
+                txtDetails.setText("Long-term • No check-in needed");
+            }
         }
     }
 
     private String getPrice(String type) {
-        return "Transient".equals(type) ? "550" : "3500";
+        return txtPrice.getText().toString().replace("₱", "").replace(" / month", "").replace(" / night", "").trim();
     }
 }

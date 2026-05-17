@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <EditText
+        android:id="@+id/etProperty"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:hint="Property Name (e.g. SD Dorm 2)"
+        android:inputType="textCapWords"
+        android:background="@android:drawable/edit_text"
+        android:layout_marginBottom="12dp"/>
+
+    <EditText
+        android:id="@+id/etRoomName"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:hint="Room Name (e.g. Room 1 - 2F)"
+        android:inputType="text"
+        android:background="@android:drawable/edit_text"
+        android:layout_marginBottom="12dp"/>
+
+    <EditText
+        android:id="@+id/etType"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:hint="Type (e.g. Bedspace / Transient)"
+        android:inputType="text"
+        android:background="@android:drawable/edit_text"
+        android:layout_marginBottom="12dp"/>
+
+    <EditText
+        android:id="@+id/etCapacity"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:hint="Capacity (e.g. 2, 4, 6)"
+        android:inputType="number"
+        android:background="@android:drawable/edit_text"
+        android:layout_marginBottom="12dp"/>
+
+</LinearLayout>

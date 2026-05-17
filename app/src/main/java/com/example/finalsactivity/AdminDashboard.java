@@ -2,46 +2,61 @@ package com.example.finalsactivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
-
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 public class AdminDashboard extends AppCompatActivity {
 
-    CardView cardPayments, cardMaintenance, cardTenants,
-            cardRooms, cardReports, cardAnnouncement;
+    // Cards instead of plain buttons (better design)
+    CardView cardViewPayments, cardReports, cardAnnouncements, cardManageRooms, cardManageUsers, cardMaintenance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_dashboard);
 
-        cardPayments = findViewById(R.id.cardPayments);
-        cardMaintenance = findViewById(R.id.cardMaintenance);
-        cardTenants = findViewById(R.id.cardTenants);
-        cardRooms = findViewById(R.id.cardRooms);
+        // INITIALIZE ALL CARDS/FEATURES
+        cardViewPayments = findViewById(R.id.cardViewPayments);
         cardReports = findViewById(R.id.cardReports);
-        cardAnnouncement = findViewById(R.id.cardAnnouncement);
+        cardAnnouncements = findViewById(R.id.cardAnnouncements);
+        cardManageRooms = findViewById(R.id.cardManageRooms);
+        cardManageUsers = findViewById(R.id.cardManageUsers);
+        cardMaintenance = findViewById(R.id.cardMaintenance);
 
-        // NAVIGATION
+        // ---------------- CLICK ACTIONS ----------------
+        // 1. View Payments
+        cardViewPayments.setOnClickListener(v ->
+                startActivity(new Intent(AdminDashboard.this, UserPayment.class))
+        );
 
-        cardPayments.setOnClickListener(v ->
-                startActivity(new Intent(this, AdminPayment.class)));
+        // 2. Reports & Analytics
+        //cardReports.setOnClickListener(v ->
+                //startActivity(new Intent(AdminDashboard.this, AdminReport.class))
+        //);
 
+        // 3. Post Announcements → Opens your Notification system
+        cardAnnouncements.setOnClickListener(v ->
+                startActivity(new Intent(AdminDashboard.this, PostAnnouncementActivity.class))
+        );
+
+        // 4. Manage Rooms
+        cardManageRooms.setOnClickListener(v ->
+                // Replace with your actual Activity
+                startActivity(new Intent(AdminDashboard.this, ManageRoomsActivity.class))
+        );
+
+        // 5. Manage Users / Tenants
+        cardManageUsers.setOnClickListener(v ->
+                // Replace with your actual Activity
+                startActivity(new Intent(AdminDashboard.this, ManageUsersActivity.class))
+        );
+
+        // 6. Maintenance Requests
         cardMaintenance.setOnClickListener(v ->
-                startActivity(new Intent(this, AdminMaintenance.class)));
+                // Replace with your actual Activity
+                startActivity(new Intent(AdminDashboard.this, AdminMaintenance.class))
+        );
 
-        cardTenants.setOnClickListener(v ->
-                startActivity(new Intent(this, AdminTenant.class)));
-
-        cardRooms.setOnClickListener(v ->
-                startActivity(new Intent(this, AdminRoom.class)));
-
-        cardReports.setOnClickListener(v ->
-                startActivity(new Intent(this, AdminReport.class)));
-
-        cardAnnouncement.setOnClickListener(v ->
-                startActivity(new Intent(this, NotificationActivity.class)));
     }
 }
