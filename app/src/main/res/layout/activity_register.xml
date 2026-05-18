@@ -22,7 +22,6 @@
             android:orientation="vertical"
             android:padding="25dp">
 
-            <!-- TITLE -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -32,7 +31,6 @@
                 android:textColor="#4F494B"
                 android:layout_gravity="center"/>
 
-            <!-- REGISTRATION FORM -->
             <LinearLayout
                 android:id="@+id/layoutRegister"
                 android:layout_width="match_parent"
@@ -137,7 +135,6 @@
 
             </LinearLayout>
 
-            <!-- VERIFICATION SECTION -->
             <LinearLayout
                 android:id="@+id/layoutVerification"
                 android:layout_width="match_parent"
@@ -194,7 +191,6 @@
 
             </LinearLayout>
 
-            <!-- BACK TO LOGIN -->
             <TextView
                 android:id="@+id/txtBackLogin"
                 android:layout_width="wrap_content"
