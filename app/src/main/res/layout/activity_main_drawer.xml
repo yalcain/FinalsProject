@@ -7,13 +7,11 @@
     android:layout_height="match_parent"
     android:background="#F5F6F8">
 
-    <!-- MAIN CONTENT WRAPPER -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- TOOLBAR -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -34,7 +32,6 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-                <!-- WELCOME TEXT -->
                 <TextView
                     android:id="@+id/txtWelcome"
                     android:layout_width="wrap_content"
@@ -51,7 +48,6 @@
                     android:textColor="#777777"
                     android:layout_marginBottom="20dp"/>
 
-                <!-- CATEGORY TABS -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -97,7 +93,6 @@
 
                 </LinearLayout>
 
-                <!-- POPULAR SECTION -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -113,7 +108,6 @@
                     android:orientation="horizontal"
                     android:weightSum="2">
 
-                    <!-- CARD SD DORM 2 -->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardSD"
                         android:layout_width="0dp"
@@ -191,7 +185,6 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <!-- CARD LOFT 22 -->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardLoft"
                         android:layout_width="0dp"
@@ -271,7 +264,6 @@
 
                 </LinearLayout>
 
-                <!-- NEAR YOU SECTION -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -288,7 +280,6 @@
                     android:orientation="horizontal"
                     android:weightSum="2">
 
-                    <!-- CARD THE DORMITORY (Palar) -->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardPalar"
                         android:layout_width="0dp"
@@ -366,7 +357,6 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <!-- CARD MILFLORES BOARDING HOUSE -->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardMilflores"
                         android:layout_width="0dp"
@@ -449,7 +439,6 @@
             </LinearLayout>
         </ScrollView>
 
-        <!-- ✅ BOTTOM NAVIGATION BAR -->
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNav"
             android:layout_width="match_parent"
@@ -461,7 +450,6 @@
 
     </LinearLayout>
 
-    <!-- NAVIGATION DRAWER -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationView"
         android:layout_width="wrap_content"
