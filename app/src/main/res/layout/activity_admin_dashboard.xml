@@ -11,7 +11,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Header -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,14 +24,12 @@
             android:background="#FFFFFF"
             android:elevation="4dp"/>
 
-        <!-- First Row: Payments & Reports -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="16dp">
 
-            <!-- View Payments -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewPayments"
                 android:layout_width="0dp"
@@ -70,7 +67,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Reports -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardReports"
                 android:layout_width="0dp"
@@ -110,14 +106,12 @@
 
         </LinearLayout>
 
-        <!-- Second Row: Announcements & Manage Rooms -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="16dp">
 
-            <!-- Post Announcements -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardAnnouncements"
                 android:layout_width="0dp"
@@ -154,8 +148,7 @@
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
-            <!-- Manage Rooms -->
+            
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardManageRooms"
                 android:layout_width="0dp"
@@ -195,13 +188,11 @@
 
         </LinearLayout>
 
-        <!-- Third Row: Manage Users & Maintenance -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <!-- Manage Users -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardManageUsers"
                 android:layout_width="0dp"
@@ -236,10 +227,8 @@
                         android:textColor="#00695C"
                         android:layout_marginTop="8dp"/>
 
-                </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Maintenance -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardMaintenance"
                 android:layout_width="0dp"
