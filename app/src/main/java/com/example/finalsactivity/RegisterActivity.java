@@ -106,8 +106,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 return;
             }
-
-            // Age Validation (15 to 21 only)
+            
             if (age < 15 || age > 21) {
 
                 Toast.makeText(
