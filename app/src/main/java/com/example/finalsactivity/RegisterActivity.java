@@ -49,10 +49,10 @@ public class RegisterActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_dropdown_item,
-                genderList
+                SexList
         );
 
-        spinnerGender.setAdapter(adapter);
+        spinnerSex.setAdapter(adapter);
 
         db = openOrCreateDatabase("DormDB",
                 MODE_PRIVATE,
