@@ -39,13 +39,11 @@ public class AddPlaceActivity extends AppCompatActivity {
         String type = etType.getText().toString().trim();
         String rating = etRating.getText().toString().trim();
 
-        // Validate fields
         if (name.isEmpty() || address.isEmpty() || price.isEmpty() || type.isEmpty() || rating.isEmpty()) {
             Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Save to database
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(Database.COL_PLACE_NAME, name);
