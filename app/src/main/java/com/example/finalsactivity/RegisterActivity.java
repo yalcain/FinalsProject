@@ -23,7 +23,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText etFullname, etBirthday, etContact,
             etEmail, etPassword, etConfirm;
 
-    Spinner spinnerGender;
+    Spinner spinnerSex;
 
     Button btnRegister;
 
@@ -44,7 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
         spinnerGender = findViewById(R.id.spinnerGender);
         btnRegister = findViewById(R.id.btnRegister);
 
-        String[] genderList = {"Male", "Female"};
+        String[] SexList = {"Male", "Female"};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this,
@@ -64,7 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
                         "fullname TEXT," +
                         "birthday TEXT," +  
                         "age INTEGER," +
-                        "gender TEXT," +
+                        "sex TEXT," +
                         "contact TEXT," +
                         "email TEXT," +
                         "password TEXT)"
@@ -74,7 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
 
             String fullname = etFullname.getText().toString().trim();
             String birthdayStr = etBirthday.getText().toString().trim();
-            String genderValue = spinnerGender.getSelectedItem().toString();
+            String sexValue = spinnerSex.getSelectedItem().toString();
             String contact = etContact.getText().toString().trim();
             String email = etEmail.getText().toString().trim();
             String password = etPassword.getText().toString().trim();
@@ -121,7 +121,7 @@ public class RegisterActivity extends AppCompatActivity {
             cv.put("fullname", fullname);
             cv.put("birthday", birthdayStr);
             cv.put("age", age);
-            cv.put("gender", genderValue);
+            cv.put("sex", sexValue);
             cv.put("contact", contact);
             cv.put("email", email);
             cv.put("password", password);
