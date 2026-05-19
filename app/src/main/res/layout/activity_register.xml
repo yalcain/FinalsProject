@@ -70,6 +70,13 @@
                     android:paddingHorizontal="15dp"
                     android:textSize="14sp"/>
 
+                <EditText
+                     android:id="@+id/etBirthday"
+                     android:hint="Birthday (YYYY-MM-DD)"
+                     android:inputType="text"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"/>
+                
                 <Spinner
                     android:id="@+id/spinnerGender"
                     android:layout_width="match_parent"
