@@ -12,9 +12,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText etFullname, etAge, etContact,
+    EditText etFullname, etBirthday, etContact,
             etEmail, etPassword, etConfirm;
 
     Spinner spinnerGender;
@@ -29,14 +35,13 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         etFullname = findViewById(R.id.etFullname);
-        etAge = findViewById(R.id.etAge);
+        etBirthday = findViewById(R.id.etBirthday); 
         etContact = findViewById(R.id.etContact);
         etEmail = findViewById(R.id.etRegEmail);
         etPassword = findViewById(R.id.etRegPassword);
         etConfirm = findViewById(R.id.etConfirmPassword);
 
         spinnerGender = findViewById(R.id.spinnerGender);
-
         btnRegister = findViewById(R.id.btnRegister);
 
         String[] genderList = {"Male", "Female"};
@@ -49,16 +54,15 @@ public class RegisterActivity extends AppCompatActivity {
 
         spinnerGender.setAdapter(adapter);
 
-        db = openOrCreateDatabase(
-                "DormDB",
+        db = openOrCreateDatabase("DormDB",
                 MODE_PRIVATE,
-                null
-        );
+                null);
 
         db.execSQL(
                 "CREATE TABLE IF NOT EXISTS users (" +
                         "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                         "fullname TEXT," +
+                        "birthday TEXT," +  
                         "age INTEGER," +
                         "gender TEXT," +
                         "contact TEXT," +
@@ -69,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(v -> {
 
             String fullname = etFullname.getText().toString().trim();
-            String ageText = etAge.getText().toString().trim();
+            String birthdayStr = etBirthday.getText().toString().trim();
             String genderValue = spinnerGender.getSelectedItem().toString();
             String contact = etContact.getText().toString().trim();
             String email = etEmail.getText().toString().trim();
@@ -77,96 +81,92 @@ public class RegisterActivity extends AppCompatActivity {
             String confirm = etConfirm.getText().toString().trim();
 
             if (fullname.isEmpty() ||
-                    ageText.isEmpty() ||
+                    birthdayStr.isEmpty() ||
                     contact.isEmpty() ||
                     email.isEmpty() ||
                     password.isEmpty() ||
                     confirm.isEmpty()) {
 
-                Toast.makeText(
-                        RegisterActivity.this,
+                Toast.makeText(this,
                         "Please fill all fields",
-                        Toast.LENGTH_SHORT
-                ).show();
-
+                        Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            int age;
+            int age = calculateAge(birthdayStr);
 
-            try {
-                age = Integer.parseInt(ageText);
-            } catch (NumberFormatException e) {
-
-                Toast.makeText(
-                        RegisterActivity.this,
-                        "Invalid age input",
-                        Toast.LENGTH_SHORT
-                ).show();
-
+            if (age == -1) {
+                Toast.makeText(this,
+                        "Invalid birthday format (use YYYY-MM-DD)",
+                        Toast.LENGTH_SHORT).show();
                 return;
             }
             
-            if (age < 15 || age > 21) {
-
-                Toast.makeText(
-                        RegisterActivity.this,
-                        "Age must be between 15 and 21 only",
-                        Toast.LENGTH_SHORT
-                ).show();
-
+            if (age < 18) {
+                Toast.makeText(this,
+                        "You must be 18 and above",
+                        Toast.LENGTH_SHORT).show();
                 return;
             }
 
+
             if (!password.equals(confirm)) {
-
-                Toast.makeText(
-                        RegisterActivity.this,
+                Toast.makeText(this,
                         "Password does not match",
-                        Toast.LENGTH_SHORT
-                ).show();
-
+                        Toast.LENGTH_SHORT).show();
                 return;
             }
 
             ContentValues cv = new ContentValues();
-
             cv.put("fullname", fullname);
+            cv.put("birthday", birthdayStr);
             cv.put("age", age);
             cv.put("gender", genderValue);
             cv.put("contact", contact);
             cv.put("email", email);
             cv.put("password", password);
 
-            long result = db.insert(
-                    "users",
-                    null,
-                    cv
-            );
+            long result = db.insert("users", null, cv);
 
             if (result != -1) {
-
-                Toast.makeText(
-                        RegisterActivity.this,
+                Toast.makeText(this,
                         "Registered Successfully",
-                        Toast.LENGTH_SHORT
-                ).show();
+                        Toast.LENGTH_SHORT).show();
 
                 startActivity(new Intent(
                         RegisterActivity.this,
                         LoginActivity.class
                 ));
-
                 finish();
 
             } else {
-
-                Toast.makeText(
-                        RegisterActivity.this,
+                Toast.makeText(this,
                         "Registration Failed",
-                        Toast.LENGTH_SHORT
-                ).show();
+                        Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private int calculateAge(String birthdayStr) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+            Date birthDate = sdf.parse(birthdayStr);
+
+            Calendar birth = Calendar.getInstance();
+            birth.setTime(birthDate);
+
+            Calendar today = Calendar.getInstance();
+
+            int age = today.get(Calendar.YEAR) - birth.get(Calendar.YEAR);
+
+            if (today.get(Calendar.DAY_OF_YEAR) < birth.get(Calendar.DAY_OF_YEAR)) {
+                age--;
+            }
+
+            return age;
+
+        } catch (ParseException e) {
+            return -1;
+        }
     }
 }
